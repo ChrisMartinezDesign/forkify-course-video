@@ -39,9 +39,9 @@ class RecipeView extends View {
           <span class="recipe__info-text">servings</span>
 
           <div class="recipe__info-buttons">
-            <button data-update-to="${
+            <button class="btn--tiny btn--increase-servings" data-update-to="${
               this._data.servings - 1
-            }" class="btn--tiny btn--increase-servings">
+            }">
               <svg>
                 <use href="${icons}#icon-minus-circle"></use>
               </svg>
@@ -124,10 +124,10 @@ class RecipeView extends View {
 
   addHandlerUpdateServings(handler) {
     this._parentEl.addEventListener(`click`, function (event) {
-      const btn = event.target.closest(`.btn--tiny`);
-      const updateTo = Number(btn.dataset.updateTo);
-
+      const btn = event.target.closest(`.btn--increase-servings`);
       if (!btn) return;
+
+      const updateTo = +btn.dataset.updateTo;
 
       if (updateTo > 0) handler(updateTo);
     });
@@ -135,6 +135,7 @@ class RecipeView extends View {
 
   addHandlerAddBookmark(handler) {
     this._parentEl.addEventListener(`click`, function (event) {
+      console.log(event);
       const btn = event.target.closest(`.btn--bookmark`);
       if (!btn) return;
       handler();
