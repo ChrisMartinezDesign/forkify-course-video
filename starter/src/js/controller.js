@@ -6,12 +6,11 @@ import searchView from './Views/searchView.js';
 import resultsVew from './Views/resultsView.js';
 import paginationView from './Views/paginationView';
 import bookmarksView from './Views/bookmarksView.js';
-import AddRecipeView from './Views/addRecipeView.js';
+import addRecipeView from './Views/addRecipeView.js';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import { async } from 'regenerator-runtime';
-import addRecipeView from './views/addRecipeView.js';
 
 // Maintains state between reload
 if (module.hot) {
