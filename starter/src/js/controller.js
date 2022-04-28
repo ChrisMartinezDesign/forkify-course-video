@@ -1,17 +1,16 @@
 // Imports
 import * as model from './model.js';
 import { MODAL_CLOSE_SECONDS } from './config.js';
-import recipeView from './views/recipeView.js';
-import searchView from './views/searchView.js';
-import resultsVew from './views/resultsView.js';
-import paginationView from './views/paginationView';
-import bookmarksView from './views/bookmarksView.js';
-import AddRecipeView from './views/addRecipeView.js';
+import recipeView from './Views/recipeView.js';
+import searchView from './Views/searchView.js';
+import resultsVew from './Views/resultsView.js';
+import paginationView from './Views/paginationView';
+import bookmarksView from './Views/bookmarksView.js';
+import addRecipeView from './Views/addRecipeView.js';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import { async } from 'regenerator-runtime';
-import addRecipeView from './views/addRecipeView.js';
 
 // Maintains state between reload
 if (module.hot) {
