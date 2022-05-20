@@ -16,7 +16,6 @@ import 'regenerator-runtime/runtime';
 // if (module.hot) {
 //   module.hot.accept();
 // }
-console.log(model);
 
 // Elements
 const recipeContainer = document.querySelector('.recipe');
