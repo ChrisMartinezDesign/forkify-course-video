@@ -16,10 +16,11 @@ import 'regenerator-runtime/runtime';
 // if (module.hot) {
 //   module.hot.accept();
 // }
-console.log('TEST');
+console.log(model);
 
 // Elements
 const recipeContainer = document.querySelector('.recipe');
+console.log(recipeContainer);
 
 // https://forkify-api.herokuapp.com/v2
 
