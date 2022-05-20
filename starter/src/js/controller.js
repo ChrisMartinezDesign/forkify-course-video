@@ -13,9 +13,10 @@ import 'regenerator-runtime/runtime';
 import { async } from 'regenerator-runtime';
 
 // Maintains state between reload
-if (module.hot) {
-  module.hot.accept();
-}
+// if (module.hot) {
+//   module.hot.accept();
+// }
+console.log('TEST');
 
 // Elements
 const recipeContainer = document.querySelector('.recipe');
