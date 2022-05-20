@@ -87,6 +87,7 @@ export default class View {
 
     newElements.forEach((newEl, i) => {
       const currentEl = currentElements[i];
+      console.log(currentEl);
 
       // Updates changed texts
       if (
