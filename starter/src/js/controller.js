@@ -19,7 +19,6 @@ import 'regenerator-runtime/runtime';
 
 // Elements
 const recipeContainer = document.querySelector('.recipe');
-console.log(recipeContainer);
 
 // https://forkify-api.herokuapp.com/v2
 
@@ -135,7 +134,7 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
-const newFeature = function () {
+const welcome = function () {
   console.log(`Welcome to the application!`);
 };
 
@@ -143,6 +142,7 @@ const init = function () {
   // Publichser/subscriber pattern
   // - addHandlerRender() - Publisher
   // - controlRecipes() - Subscriber
+  welcome();
   bookmarksView.addHandlerRender(controlBookmarks);
   recipeView.addHandlerRender(controlRecipes);
   recipeView.addHandlerUpdateServings(controlServings);
@@ -150,6 +150,5 @@ const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
-  newFeature();
 };
 init();

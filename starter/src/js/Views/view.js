@@ -76,7 +76,6 @@ export default class View {
   update(data) {
     // if (!data || (Array.isArray(data) && data.length === 0))
     //   return this.renderError();
-    console.log('TEST: Update');
 
     this._data = data;
     const newHTML = this._generateHTML();
@@ -100,6 +99,8 @@ export default class View {
       // Updates change attributes
       if (!newEl.isEqualNode(currentEl)) {
         Array.from(newEl.attributes).forEach(attribute => {
+          console.log('Name:', attribute.name);
+          console.log('Value:', attribute.value);
           currentEl.setAttribute(attribute.name, attribute.value);
         });
       }
