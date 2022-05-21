@@ -76,6 +76,7 @@ export default class View {
   update(data) {
     // if (!data || (Array.isArray(data) && data.length === 0))
     //   return this.renderError();
+    console.log('TEST: Update');
 
     this._data = data;
     const newHTML = this._generateHTML();
