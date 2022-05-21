@@ -4,6 +4,8 @@ import View from './view.js';
 import icons from 'url:../../img/icons.svg'; // Parcel vs. 2
 import { Fraction } from '../../../../node_modules/fractional';
 
+console.log(Fraction);
+
 class RecipeView extends View {
   _parentEl = document.querySelector('.recipe');
   _errorMessage = `We could not find the recipe. Please try another one.`;
