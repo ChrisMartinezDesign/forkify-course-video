@@ -2,7 +2,7 @@
 import View from './view.js';
 
 import icons from 'url:../../img/icons.svg'; // Parcel vs. 2
-import { Fraction } from 'fractional';
+import { Fraction } from '../../../../node_modules/fractional';
 
 class RecipeView extends View {
   _parentEl = document.querySelector('.recipe');
