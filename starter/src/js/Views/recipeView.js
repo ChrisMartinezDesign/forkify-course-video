@@ -2,8 +2,15 @@
 import View from './view.js';
 
 import icons from 'url:../../img/icons.svg'; // Parcel vs. 2
-import { Fraction } from '../../../../node_modules/fractional/index.js';
-// console.log(Fraction);
+// import { Fraction } from '../../../../node_modules/fractional/index.js';
+let Fraction = '';
+(async () => {
+  const { Fraction: fractionFunction } = await import(
+    '../../../../node_modules/fractional/index.js'
+  );
+  Fraction = fractionFunction;
+  console.log(Fraction);
+})();
 
 class RecipeView extends View {
   _parentEl = document.querySelector('.recipe');
