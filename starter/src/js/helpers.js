@@ -1,8 +1,11 @@
-//////////////////////////
-// Every project has this file, but it is seperate from the architecture
+////////////////////////////////
+// Every project has this file,
+// but it is seperate from the
+// architecture
 
 import { TIMEOUT_SECONDS } from './config';
 
+// Used to safe guard from long loading times
 export const timeout = function (s) {
   return new Promise(function (_, reject) {
     setTimeout(function () {
@@ -11,6 +14,7 @@ export const timeout = function (s) {
   });
 };
 
+// Generate an AJAX call to the Forkify API
 export const AJAX = async function (url, uploadData = undefined) {
   try {
     const fetchPromise = uploadData
@@ -37,6 +41,7 @@ export const AJAX = async function (url, uploadData = undefined) {
   }
 };
 
+// Legacy versions of sending AJAX calls
 /*
 export const getJSON = async function (url) {
   try {

@@ -1,10 +1,18 @@
 // Parent class
 import View from './view.js';
-import icons from 'url:../../img/icons.svg'; // Parcel vs. 1
+
+// Parcel vs. 1
+import icons from 'url:../../img/icons.svg';
 
 class PreviewView extends View {
+  //////////////////////
+  // Private variables
   _parentEl = ``;
 
+  //////////////////////
+  // Private functions
+
+  // Generates HTML for a preview of each recipe that returns from the user's search results
   _generateHTML() {
     const id = window.location.hash.slice(1);
 
@@ -33,4 +41,5 @@ class PreviewView extends View {
   }
 }
 
+// Connects the View to the Controller
 export default new PreviewView();

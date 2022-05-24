@@ -1,15 +1,24 @@
-// import icons from `../img/icons.svg` // Parcel vs. 1
-import icons from 'url:../../img/icons.svg'; // Parcel vs. 1
+// Parcel vs. 1
+import icons from 'url:../../img/icons.svg';
 
+// Parent class
 export default class View {
+  //////////////////////
+  // Private variables
   _data;
 
+  //////////////////////
+  // Private functions
+
+  // Clears the HTML from the parent container
   _clearContainer() {
     this._parentEl.innerHTML = '';
   }
 
   ////////
   // API
+
+  // Renders the spinner while content is loading
   renderSpinner() {
     const html = `
       <div class="spinner">
@@ -22,6 +31,7 @@ export default class View {
     this._parentEl.insertAdjacentHTML('afterbegin', html);
   }
 
+  // Render a given error for the class calling this function
   renderError(message = this._errorMessage) {
     const html = `
       <div class="error">
@@ -36,6 +46,7 @@ export default class View {
     this._parentEl.insertAdjacentHTML('afterbegin', html);
   }
 
+  // Render a given message for the class calling this function
   renderMessage(message = this._successMessage) {
     const html = `
       <div class="error">
@@ -50,15 +61,7 @@ export default class View {
     this._parentEl.insertAdjacentHTML('afterbegin', html);
   }
 
-  /**
-   * Render the received object to the DOM
-   * @param {Object | Object[]} data The data to be rendered (e.g. recipe)
-   * @param {Boolean} [render=true] If false, create markup string instead of rendering to the DOM
-   * @returns {undefined | string} A markup string is returned if render is false
-   * @this {Object} View instance
-   * @author Chris Martinez
-   * @todo Finish the implementation
-   */
+  // Render the given HTML from the class calling this function
   render(data, render = true) {
     if (!data || (Array.isArray(data) && data.length === 0))
       return this.renderError();
@@ -66,17 +69,15 @@ export default class View {
     this._data = data;
     const html = this._generateHTML();
 
-    // Return html for PreviewView and ResultsVies
+    // Return HTML for PreviewView and ResultsView
     if (!render) return html;
 
     this._clearContainer();
     this._parentEl.insertAdjacentHTML('afterbegin', html);
   }
 
+  // Update the UI within a given container
   update(data) {
-    // if (!data || (Array.isArray(data) && data.length === 0))
-    //   return this.renderError();
-
     this._data = data;
     const newHTML = this._generateHTML();
 

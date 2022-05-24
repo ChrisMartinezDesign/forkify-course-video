@@ -1,11 +1,9 @@
 // Parent class
 import View from './view.js';
 
-import previewView from './previewView';
-// import icons from `../img/icons.svg` // Parcel vs. 1
-import icons from 'url:../../img/icons.svg'; // Parcel vs. 1
-
 class AddRecipeView extends View {
+  //////////////////////
+  // Private variables
   _parentEl = document.querySelector('.upload');
   _successMessage = `Recipe Uploaded Successfully`;
 
@@ -14,20 +12,27 @@ class AddRecipeView extends View {
   _btnOpen = document.querySelector(`.nav__btn--add-recipe`);
   _btnClose = document.querySelector(`.btn--close-modal`);
 
+  // Adds handlers to show and hide the 'add recipe' popup when an instance of the class is created
   constructor() {
     super();
     this._addHandlerShowWindow();
     this._addHandlerHideWindow();
   }
 
+  //////////////////////
+  // Private functions
+
+  // No need to generate HTML because it is written in index.html with the hidden class on page load
   _generateHTML() {
     return ``;
   }
 
+  // Handles showing the 'add recipe' popup
   _addHandlerShowWindow() {
     this._btnOpen.addEventListener(`click`, this.toggleHiddenClass.bind(this));
   }
 
+  // Handles hiding the 'add recipe' popup
   _addHandlerHideWindow() {
     this._btnClose.addEventListener(`click`, this.toggleHiddenClass.bind(this));
     this._overlay.addEventListener(`click`, this.toggleHiddenClass.bind(this));
@@ -35,11 +40,14 @@ class AddRecipeView extends View {
 
   ////////
   // API
+
+  // Toggles the hidden class
   toggleHiddenClass() {
     this._overlay.classList.toggle(`hidden`);
     this._window.classList.toggle(`hidden`);
   }
 
+  // Handles sending the data to the Model to upload to the Forkify API
   addHandlerUpload(handler) {
     this._parentEl.addEventListener(`submit`, function (event) {
       event.preventDefault();
@@ -50,4 +58,5 @@ class AddRecipeView extends View {
   }
 }
 
+// Connects the View to the Controller
 export default new AddRecipeView();

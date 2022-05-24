@@ -1,15 +1,22 @@
 // Parent class
 import View from './view.js';
 
-import icons from 'url:../../img/icons.svg'; // Parcel vs. 2
+// Parcel vs. 2
+import icons from 'url:../../img/icons.svg';
 // import { Fraction } from '../../../../node_modules/fractional/index.js';
 // console.log(Fraction);
 
 class RecipeView extends View {
+  //////////////////////
+  // Private variables
   _parentEl = document.querySelector('.recipe');
   _errorMessage = `We could not find the recipe. Please try another one.`;
   _successMessage = `We found your recipe 🙂`;
 
+  //////////////////////
+  // Private functions
+
+  // Generate the HTML for current recipe
   _generateHTML() {
     return `
       <figure class="recipe__fig">
@@ -98,6 +105,7 @@ class RecipeView extends View {
       </div>`;
   }
 
+  // Generate HTML for the current recipe's ingredients
   _generateHTMLIngredient(ing) {
     return `
       <li class="recipe__ingredient">
@@ -116,12 +124,15 @@ class RecipeView extends View {
 
   ////////
   // API
+
+  // Render the current recipe UI in the recipe container
   addHandlerRender(handler) {
     [`hashchange`, `load`].forEach(event =>
       window.addEventListener(event, handler)
     );
   }
 
+  // Increases or decreases the current recipe's ingredients quanity UI based on user interaction
   addHandlerUpdateServings(handler) {
     this._parentEl.addEventListener(`click`, function (event) {
       const btn = event.target.closest(`.btn--increase-servings`);
@@ -133,6 +144,7 @@ class RecipeView extends View {
     });
   }
 
+  // Adds current recipe to the bookmarks tab UI
   addHandlerAddBookmark(handler) {
     this._parentEl.addEventListener(`click`, function (event) {
       const btn = event.target.closest(`.btn--bookmark`);

@@ -1,12 +1,18 @@
 // Parent class
 import View from './view.js';
 
-// import icons from `../img/icons.svg` // Parcel vs. 1
-import icons from 'url:../../img/icons.svg'; // Parcel vs. 1
+// Parcel vs. 1
+import icons from 'url:../../img/icons.svg';
 
 class PaginationView extends View {
+  //////////////////////
+  // Private variables
   _parentEl = document.querySelector('.pagination');
 
+  //////////////////////
+  // Private functions
+
+  // Generates HTML for the paginated pages
   _generateHTML() {
     const currentPage = this._data.page;
     const numPages = Math.ceil(
@@ -65,6 +71,7 @@ class PaginationView extends View {
     return ``;
   }
 
+  // Handles when the user clicks a pagination button
   addHandlerClick(handler) {
     this._parentEl.addEventListener(`click`, function (event) {
       const btn = event.target.closest(`.btn--inline`);
@@ -78,4 +85,5 @@ class PaginationView extends View {
   }
 }
 
+// Connects the View to the Controller
 export default new PaginationView();

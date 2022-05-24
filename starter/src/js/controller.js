@@ -1,4 +1,3 @@
-// Imports
 import * as model from './model.js';
 import { MODAL_CLOSE_SECONDS } from './config.js';
 import recipeView from './Views/recipeView.js';
@@ -10,20 +9,25 @@ import addRecipeView from './Views/addRecipeView.js';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-// import { async } from 'regenerator-runtime';
 
+// Dev control - maintains state between page reloads
 // Maintains state between reload
 // if (module.hot) {
 //   module.hot.accept();
 // }
 
+/////////////
 // Elements
 const recipeContainer = document.querySelector('.recipe');
 
+/////////////////////////////////////////
+// Forkify API Link
 // https://forkify-api.herokuapp.com/v2
 
-///////////////////////////////////////
+/////////////////////////
+// Controller functions
 
+// Controls the current recipe, recipe results, and bookmarked recipes' View
 const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
@@ -49,6 +53,7 @@ const controlRecipes = async function () {
   }
 };
 
+// Controls the search results through the Model
 const controlSearchResults = async function () {
   try {
     resultsVew.renderSpinner();
@@ -70,6 +75,7 @@ const controlSearchResults = async function () {
   }
 };
 
+// Controls the pagination of the search results
 const controlPagination = function (goto) {
   // 1. Render NEW results
   resultsVew.render(model.getSearchResultsPage(goto));
@@ -78,15 +84,16 @@ const controlPagination = function (goto) {
   paginationView.render(model.state.search);
 };
 
+// Controls the recipe's ingredients quantity based on the serving size
 const controlServings = function (newServings) {
-  // Update the recipe servigs (in state)
+  // Update the recipe servings (in state)
   model.updateServings(newServings);
 
-  // UPdate the recipe view
-  // recipeView.render(model.state.recipe);
+  // Update the recipe view
   recipeView.update(model.state.recipe);
 };
 
+// Controls adding a bookmark
 const controlAddBookmark = function () {
   // 1. Add or remove a bookmark
   if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
@@ -99,10 +106,12 @@ const controlAddBookmark = function () {
   bookmarksView.render(model.state.bookmarks);
 };
 
+// Controls rendering each bookmark, if any
 const controlBookmarks = function () {
   bookmarksView.render(model.state.bookmarks);
 };
 
+// Controls adding a recipe
 const controlAddRecipe = async function (newRecipe) {
   try {
     // Show loading spinner
@@ -134,12 +143,14 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
+// Welcomes a dev to the application
 const welcome = function () {
   console.log(`Welcome to the application!`);
 };
 
+// Initializes the application
 const init = function () {
-  // Publichser/subscriber pattern
+  // Publisher/subscriber pattern
   // - addHandlerRender() - Publisher
   // - controlRecipes() - Subscriber
   welcome();
