@@ -10,11 +10,10 @@ import addRecipeView from './Views/addRecipeView.js';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
-// Dev control - maintains state between page reloads
-// Maintains state between reload
-// if (module.hot) {
-//   module.hot.accept();
-// }
+// Dev control - maintains state between reloads
+if (module.hot) {
+  module.hot.accept();
+}
 
 /////////////
 // Elements
@@ -124,7 +123,7 @@ const controlAddRecipe = async function (newRecipe) {
     recipeView.render(model.state.recipe);
 
     // Display success message
-    addRecipeView.renderMessage();
+    addRecipeView.renderSuccessMessage();
 
     // Render the bookmarkView
     bookmarksView.render(model.state.bookmarks);
@@ -136,6 +135,7 @@ const controlAddRecipe = async function (newRecipe) {
     // Close form window
     setTimeout(function () {
       addRecipeView.toggleHiddenClass();
+      addRecipeView.clearInputFields();
     }, MODAL_CLOSE_SECONDS * 1000);
   } catch (error) {
     console.error(`🔥`, error);

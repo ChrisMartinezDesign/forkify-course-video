@@ -1,6 +1,9 @@
 // Parent class
 import View from './view.js';
 
+// Parcel vs. 1
+import icons from 'url:../../img/icons.svg';
+
 class AddRecipeView extends View {
   //////////////////////
   // Private variables
@@ -45,6 +48,56 @@ class AddRecipeView extends View {
   toggleHiddenClass() {
     this._overlay.classList.toggle(`hidden`);
     this._window.classList.toggle(`hidden`);
+    if (
+      this._parentEl
+        .querySelector('.upload__column')
+        .classList.contains('hidden')
+    )
+      this._parentEl
+        .querySelectorAll('.upload__column')
+        .forEach(column => (column.style.display = 'grid'));
+    if (
+      document.querySelector('.error') &&
+      document.querySelector('.spinner')
+    ) {
+      document.querySelector('.spinner').classList.add(`hidden`);
+      document.querySelector('.error').classList.add(`hidden`);
+    }
+  }
+
+  renderSpinner() {
+    const html = `
+      <div class="spinner">
+        <svg>
+          <use href="${icons}#icon-loader"></use>
+        </svg>
+      </div>
+      `;
+    this._parentEl
+      .querySelectorAll('.upload__column')
+      .forEach(column => (column.style.display = 'none'));
+    this._parentEl.insertAdjacentHTML('afterbegin', html);
+  }
+
+  // Displays success message
+  renderSuccessMessage() {
+    const html = `
+      <div class="error">
+        <div>
+          <svg>
+            <use href="${icons}#icon-smile"></use>
+          </svg>
+        </div>
+        <p>${this._successMessage}</p>
+      </div>`;
+    this._parentEl.insertAdjacentHTML('afterbegin', html);
+  }
+
+  // Clears input fields after the user submits a recipe
+  clearInputFields() {
+    this._parentEl
+      .querySelectorAll('input')
+      .forEach(input => (input.value = ''));
   }
 
   // Handles sending the data to the Model to upload to the Forkify API
