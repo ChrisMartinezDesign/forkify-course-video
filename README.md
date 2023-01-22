@@ -1,7 +1,8 @@
 # Forkify Project
 
-- JavaScript Udemy course project
-- Coded the JavaScript from scratch from a HTML template
+- Used a HTML template to code all the JavaScript
+- Udemy Course Project - [The Complete JavaScript Course 2023](https://www.udemy.com/course/the-complete-javascript-course/)
+- Course Instructor - Jonas Schmedtmann
 
 # Development Stack 📚
 
