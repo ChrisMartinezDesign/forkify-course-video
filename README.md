@@ -1,4 +1,4 @@
-# Forkify Project 🍽
+# Forkify Project 🍴
 
 - Used a HTML and SAAS template to code all the JavaScript
 - Udemy Course Project - [The Complete JavaScript Course 2023](https://www.udemy.com/course/the-complete-javascript-course/)
